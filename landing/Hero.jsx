@@ -40,7 +40,7 @@ function Hero() {
           boxShadow: 'var(--shadow-1)',
           position: 'relative',
         }}>
-          <img src="../../assets/portrait-placeholder.svg" alt="Marina Alves"
+          <img src="../assets/portrait-placeholder.svg" alt="Marina Alves"
                style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
         </div>
       </div>

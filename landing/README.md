@@ -6,8 +6,8 @@ A pixel-faithful recreation of the personal-brand landing page described in the 
 
 - `index.html` — the assembled landing page (hero → sobre → como posso te ajudar → forma de trabalho → atendimento → fechamento → footer).
 - `Header.jsx` — top wordmark + nav.
-- `Hero.jsx` — name, tagline, two CTAs, arched portrait.
-- `Sobre.jsx` — about section with photo and meta list (formação, CRP, etc.).
+- `Hero.jsx` — name, tagline, two CTAs, portrait.
+- `Sobre.jsx` — about section with quote and meta list (formação, CRP, etc.).
 - `Servicos.jsx` — six service cards.
 - `Forma.jsx` — three-pillar section about the systemic approach.
 - `Atendimento.jsx` — online-session details + CTA.
