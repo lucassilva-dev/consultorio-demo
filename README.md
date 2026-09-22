@@ -100,6 +100,8 @@ public/              assets e scripts do cliente
 tests/               testes de integração
 ```
 
+`public/assets/` e `public/colors_and_type.css` não são versionados: `scripts/prepare-static.js` os copia de `assets/` e `colors_and_type.css` na raiz, e roda em `npm run build` e antes de `npm run dev` e `npm start`. Edite sempre os arquivos da raiz.
+
 ## Stack
 
 Node.js 22, Express, Zod, better-sqlite3, postgres, Supabase Storage, pdf-lib, googleapis, Helmet, sanitize-html.

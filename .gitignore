@@ -20,3 +20,6 @@ Thumbs.db
 
 # documentos privados (recibos) — nunca versionados
 private-documents/
+
+public/assets/
+public/colors_and_type.css
