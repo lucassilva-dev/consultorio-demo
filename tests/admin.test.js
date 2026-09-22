@@ -4077,9 +4077,10 @@ test("prontuário encerrado recusa toda alteração, mas aceita bloquear e adend
 
 test("abrir prontuário sobrevive a chamadas simultâneas", async () => {
   const context = createTestContext();
+  const server = context.app.listen(0);
 
   try {
-    const agent = request.agent(context.app);
+    const agent = request.agent(server);
     await loginAsAdmin(agent);
     const patient = await createPatient(agent, {
       fullName: "Corrida Teste",
@@ -4103,6 +4104,7 @@ test("abrir prontuário sobrevive a chamadas simultâneas", async () => {
       .get(patient.id);
     assert.equal(linhas.total, 1);
   } finally {
+    await new Promise((resolve) => server.close(resolve));
     await destroyTestContext(context);
   }
 });
