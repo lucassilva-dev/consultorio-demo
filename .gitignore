@@ -1,0 +1,22 @@
+node_modules/
+.env
+data/
+uploads/
+coverage/
+.playwright-mcp/
+mobile-home*.png
+.DS_Store
+Thumbs.db
+
+.vercel
+.env.production.local
+
+# logs do servidor de desenvolvimento local
+.srv-out.log
+.srv-err.log
+
+# referência de design (não versionada)
+.design-ref/
+
+# documentos privados (recibos) — nunca versionados
+private-documents/

@@ -1,0 +1,229 @@
+/* =====================================================================
+   Marina Alves — Design Tokens
+   colors, type, spacing, radii, shadows + semantic element styles
+   ===================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* ---------- Color ---------- */
+  --bg:           #F6EFE7;   /* page background, warm off-white */
+  --bg-soft:      #EFE5D8;   /* secondary section band */
+  --bg-card:      #FBF6EF;   /* card surface, lighter than bg */
+  --fg:           #3A2A22;   /* primary text, warm dark brown */
+  --fg-muted:     #6B544A;   /* secondary text */
+  --fg-soft:      #8A7568;   /* fine print / disabled */
+
+  --accent:       #611775;   /* vinho queimado — primary CTA */
+  --accent-deep:  #4F1E25;   /* pressed */
+  --accent-soft:  #B98A8E;   /* malva pálido — quiet highlights */
+  --lavender:     #A89BAE;   /* used sparingly */
+  --terracotta:   #B97A5C;   /* one decorative role */
+
+  --line:         #E4D6C6;   /* hairline borders */
+
+  /* ---------- Type ---------- */
+  --font-display: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  /* fluid type scale */
+  --t-display-xl: clamp(56px, 8vw, 112px);
+  --t-h1:         clamp(40px, 5vw, 64px);
+  --t-h2:         clamp(32px, 3.6vw, 48px);
+  --t-h3:         22px;
+  --t-eyebrow:    13px;
+  --t-body-lg:    19px;
+  --t-body:       17px;
+  --t-small:      14px;
+  --t-button:     15px;
+
+  --lh-tight:     1.08;
+  --lh-snug:      1.3;
+  --lh-body:      1.7;
+
+  /* ---------- Spacing ---------- */
+  --space-1:  4px;
+  --space-2:  8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  24px;
+  --space-6:  32px;
+  --space-7:  48px;
+  --space-8:  64px;
+  --space-9:  96px;
+  --space-10: 128px;
+  --space-section: clamp(80px, 10vw, 160px);
+  --container:        1180px;
+  --container-narrow: 720px;
+  --gutter: clamp(20px, 5vw, 80px);
+
+  /* ---------- Radii ---------- */
+  --radius-sm:    8px;
+  --radius-md:    16px;
+  --radius-lg:    24px;
+  --radius-pill:  999px;
+
+  /* ---------- Shadows (very subtle) ---------- */
+  --shadow-1: 0 1px 2px rgba(58,42,34,.04), 0 8px 24px -12px rgba(58,42,34,.10);
+  --shadow-2: 0 2px 4px rgba(58,42,34,.06), 0 24px 48px -20px rgba(58,42,34,.18);
+
+  /* ---------- Motion ---------- */
+  --ease: cubic-bezier(.2,.6,.2,1);
+  --dur:  200ms;
+}
+
+/* =====================================================================
+   Semantic element styles
+   ===================================================================== */
+
+html, body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font-body);
+  font-size: var(--t-body);
+  line-height: var(--lh-body);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  color: var(--fg);
+  letter-spacing: -0.01em;
+  margin: 0;
+  text-wrap: balance;
+}
+
+h1 { font-size: var(--t-h1); line-height: var(--lh-tight); }
+h2 { font-size: var(--t-h2); line-height: 1.12; }
+h3 { font-size: var(--t-h3); line-height: var(--lh-snug); font-family: var(--font-body); font-weight: 600; letter-spacing: -0.005em; }
+
+p {
+  margin: 0;
+  text-wrap: pretty;
+  color: var(--fg);
+}
+
+.eyebrow {
+  font-family: var(--font-body);
+  font-size: var(--t-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+.display-xl {
+  font-family: var(--font-display);
+  font-size: var(--t-display-xl);
+  font-weight: 500;
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+}
+
+.lede {
+  font-size: var(--t-body-lg);
+  color: var(--fg-muted);
+  line-height: 1.55;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--dur) var(--ease);
+}
+a:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--accent-soft);
+  text-decoration-thickness: 1px;
+}
+
+/* =====================================================================
+   Buttons (semantic)
+   ===================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-family: var(--font-body);
+  font-size: var(--t-button);
+  font-weight: 500;
+  letter-spacing: -0.005em;
+  padding: 16px 28px;
+  min-height: 52px;
+  border-radius: var(--radius-md);
+  border: 1.5px solid transparent;
+  cursor: pointer;
+  transition: background var(--dur) var(--ease),
+              color var(--dur) var(--ease),
+              border-color var(--dur) var(--ease),
+              transform var(--dur) var(--ease);
+  text-decoration: none;
+}
+.btn:hover { text-decoration: none; }
+.btn:active { transform: scale(0.985); }
+
+.btn-primary {
+  background: var(--accent);
+  color: var(--bg);
+}
+.btn-primary:hover { background: var(--accent-deep); }
+
+.btn-secondary {
+  background: transparent;
+  color: var(--fg);
+  border-color: var(--fg);
+}
+.btn-secondary:hover {
+  background: var(--fg);
+  color: var(--bg);
+}
+
+.btn-tertiary {
+  background: transparent;
+  color: var(--fg);
+  padding: 8px 0;
+  min-height: 0;
+  border-radius: 0;
+}
+.btn-tertiary .arrow {
+  display: inline-block;
+  transition: transform var(--dur) var(--ease);
+}
+.btn-tertiary:hover .arrow { transform: translateX(4px); }
+.btn-tertiary:hover {
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  text-decoration-color: var(--accent-soft);
+}
+
+/* =====================================================================
+   Card (semantic)
+   ===================================================================== */
+
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-lg);
+  padding: 32px;
+  box-shadow: var(--shadow-1);
+  transition: box-shadow var(--dur) var(--ease),
+              transform var(--dur) var(--ease);
+}
+.card:hover {
+  box-shadow: var(--shadow-2);
+  transform: translateY(-2px);
+}
+
+/* =====================================================================
+   Layout helpers
+   ===================================================================== */
+
+.container { max-width: var(--container); margin: 0 auto; padding-inline: var(--gutter); }
+.container-narrow { max-width: var(--container-narrow); margin: 0 auto; padding-inline: var(--gutter); }
+.section { padding-block: var(--space-section); }
+.section-soft { background: var(--bg-soft); }

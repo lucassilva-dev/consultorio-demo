@@ -1,0 +1,41 @@
+services:
+  - type: web
+    name: cv2-admin-site
+    runtime: node
+    plan: starter
+    autoDeploy: true
+    buildCommand: npm ci
+    startCommand: npm start
+    healthCheckPath: /health
+    disk:
+      name: app-data
+      mountPath: /var/data
+      sizeGB: 5
+    envVars:
+      - key: NODE_ENV
+        value: production
+      - key: PORT
+        value: 3000
+      - key: DATABASE_PATH
+        value: /var/data/database.sqlite
+      - key: UPLOAD_DIR
+        value: /var/data/uploads
+      # Recibos e demais documentos privados ficam fora de UPLOAD_DIR, que é
+      # publicado em /uploads. Sem esta variável o padrão já é
+      # /var/data/private-documents — declarada aqui para deixar explícito que
+      # o diretório precisa estar no disco persistente.
+      - key: PRIVATE_UPLOAD_DIR
+        value: /var/data/private-documents
+      - key: SESSION_SECRET
+        generateValue: true
+      # Chave AES de 32 bytes em base64, obrigatória para o módulo de prontuário
+      # e para os tokens do Google Calendar. Sem ela, toda operação clínica
+      # responde 500. Gere com:
+      #   node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+      # Nunca rotacione sem migrar o conteúdo já criptografado.
+      - key: TOKEN_ENCRYPTION_KEY
+        sync: false
+      - key: ADMIN_EMAIL
+        sync: false
+      - key: ADMIN_PASSWORD_HASH
+        sync: false

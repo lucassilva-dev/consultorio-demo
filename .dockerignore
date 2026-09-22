@@ -1,0 +1,9 @@
+node_modules
+npm-debug.log
+.env
+.playwright-mcp
+data
+uploads
+coverage
+mobile-home*.png
+.git
