@@ -92,7 +92,8 @@ Cada domínio tem seu arquivo em `tests/` (`auth`, `site-content`, `leads-patien
 
 ```
 src/
-  routes.js          entrada HTTP e validação
+  routes.js          criação do app, cabeçalhos de segurança e ponto único de registro das rotas
+  routes/            rotas de cada domínio, helpers de rota e boot das dependências
   services/          regra de negócio
   repositories/      acesso a dados (sqlite e postgres)
   lib/               criptografia, sessão, sanitização, validação
