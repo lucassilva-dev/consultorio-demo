@@ -49,10 +49,34 @@ cp .env.example .env
 npm install
 npm run migrate
 npm run admin:hash
+npm run seed:demo
 npm run dev
 ```
 
 O comando `admin:hash` gera o hash da senha para preencher `ADMIN_PASSWORD_HASH`. O site sobe em `http://localhost:3000` e o painel em `/admin/login`.
+
+### Dados de demonstração
+
+O `seed:demo` roda depois das migrations e deixa o painel pronto para navegar com dados fictícios. O seed precisa de `ADMIN_EMAIL`, de `TOKEN_ENCRYPTION_KEY` (chave de 32 bytes em base64, usada para cifrar o prontuário) e de uma senha para o admin, por um destes caminhos:
+
+- `ADMIN_PASSWORD_HASH` preenchido com a saída de `npm run admin:hash`
+- `SEED_ADMIN_PASSWORD` com a senha em texto (mínimo de 10 caracteres), deixando `ADMIN_PASSWORD_HASH` vazio. O seed gera o hash com o mesmo `src/lib/password.js` da aplicação
+
+```bash
+node -e "console.log(require('crypto').randomBytes(32).toString('base64'))"
+```
+
+O comando acima gera um valor válido para `TOKEN_ENCRYPTION_KEY`. Guarde a chave: sem ela o prontuário gravado pelo seed não pode ser lido.
+
+O que o seed cria:
+
+- conteúdo público, modelos de mensagem e configurações a partir de `src/default-content.js` e `src/default-clinic-data.js`
+- o administrador, se ainda não existir
+- quatro pacientes fictícios (e-mails `@exemplo.com`, telefone `31900000000`) com sessões passadas e futuras e pagamentos pagos, pendentes, isentos e cancelados
+- anamnese e duas evoluções para uma das pacientes, gravadas pelos mesmos serviços da aplicação, portanto criptografadas
+- recibos para sessões pagas, usando a numeração sequencial
+
+Rodar de novo não duplica nada: cada item é procurado antes de ser criado. Com `NODE_ENV=production` o seed se recusa a rodar, a não ser que receba `npm run seed:demo -- --force`. No fim ele imprime o e-mail e a senha de acesso ao painel. Se a senha veio só por `ADMIN_PASSWORD_HASH`, o seed não tem como conhecê-la e indica que é a mesma usada no `admin:hash`.
 
 ## Testes
 
