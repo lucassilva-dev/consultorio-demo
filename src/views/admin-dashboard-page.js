@@ -717,7 +717,7 @@ function renderAdminDashboardPage(user) {
     bodyClass: "admin-shell",
     head: ADMIN_FONTS_HEAD,
     styles: ["/admin.css"],
-    scripts: ["/admin-dashboard.js"],
+    scripts: ["/admin-dashboard/main.js"],
     content: `
       <div class="admin-layout">
         <nav class="admin-sidebar apenas-desktop" aria-label="Áreas do painel">

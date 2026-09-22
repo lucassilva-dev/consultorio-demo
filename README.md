@@ -100,6 +100,7 @@ src/
   db/migrations/     schema versionado
   views/             renderização server-side
 public/              assets e scripts do cliente
+  admin-dashboard/   painel administrativo em módulos ES nativos, um por área (entrada: main.js)
 tests/               testes de integração
 ```
 
