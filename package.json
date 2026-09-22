@@ -14,7 +14,7 @@
     "migrate:prod": "node scripts/migrate-production.js",
     "admin:hash": "node scripts/generate-password-hash.js",
     "seed:demo": "node scripts/seed-demo.js",
-    "test": "node --test --test-concurrency=1 tests/admin.test.js",
+    "test": "node --test --test-concurrency=1 \"tests/*.test.js\"",
     "smoke": "node scripts/smoke-test.js",
     "verify:postgres": "node scripts/verify-postgres.js"
   },

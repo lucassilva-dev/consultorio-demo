@@ -86,6 +86,8 @@ npm test
 
 Suíte de integração sobre a API com SQLite em memória, cobrindo autenticação, permissões, prontuário, recibos e o comportamento dos dois provedores de persistência.
 
+Cada domínio tem seu arquivo em `tests/` (`auth`, `site-content`, `leads-patients`, `sessions-finance`, `receipts`, `clinical`, `google-calendar`, `persistence`, `error-handling`), e o setup comum, que cria o app isolado com banco temporário e faz login, fica em `tests/helpers.js`. O `npm test` roda todos os `tests/*.test.js` em sequência.
+
 ## Estrutura
 
 ```
